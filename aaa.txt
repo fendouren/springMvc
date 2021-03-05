@@ -1,0 +1,100 @@
+一：不定项选择题：
+1：B
+2：C
+3：B
+4：D
+5：D
+6：ACD
+7：A
+8：B
+9：BCD
+10:D
+11:B
+12:B
+13:AC
+14:ADE
+15:C
+16:B
+17:AB
+18:A
+19:C
+20:B
+二：简答题：
+1：答：== 是比较运算符，equals是一个方法
+==可以比较基本数据类型，还能比较对象；而equals只能比较俩个对象。
+==对于基本数据类型，比较的是二者的值是否相等；对于引用数据类型比较的是：他们的地址值。
+而equals方法：没有重写equals方法方式时，比较的是地址值，重写以后不仅要比较地址值。还要比较他们的值。
+2：答：1：interface需要实现，用到implements，而abstract class 需要继承，用到extends
+	2：一个类可以实现多个interface，但是一个类只能继承一个abstract class。
+	3： abstract class 当中可以有抽象的方法，也可以不是抽象的方法，可以有选择的进行实现方法。而interface当中都是抽象方法，都需要实现类进行实现。
+3：答：1：同步方法：既有synchronized关键字修饰的方法，在调用方法前，需要获得内置锁，否则就处于阻塞状态。
+	2：同步代码块：
+	3：使用特殊域变量(volatile)实现线程同步
+	4：使用重入锁实现线程同步。
+	5：ThreadLocal与同步机制都是为了解决多线程中相同变量的访问冲突问题；
+4：答：工厂模式就是将抽象操作与具体的类型隔离：将抽象操作放在基本类中。具体的类型放在子类当中。
+5：答：在运行中，可以够造任意的一个类的对象，可以了解到一个类的所有属性和方法；
+对于任意对象，都能够调用它的方法，给定类名，就可以获取到很多信息。
+6：变量不合理的作用域。  各种连接：数据库的连接、网络连接、io连接。单例模式导致的内存泄露。
+1、
+public static void Test() {
+        int a = 111;  //七进制
+        int i = 0;    //十进制
+        int num = 1;
+        while (a != 0){
+
+            i += a % 10 * num;
+            num = num * 7;
+            a = a / 10;
+        }
+        System.out.println(i);
+    }
+
+
+2、
+public static void Password() {
+        Scanner in = new Scanner(System.in);
+        System.out.println("密码长度：");
+        int lengh = in.nextInt();
+        int i;
+        ArrayList<Character> list = new ArrayList<>();
+        String pwd = "";
+        while (lengh > 0){
+            i = (int) (Math.random() * 1000);
+            if ((i>=48&&i<=57)||(i>=65&&i<=90)||(i>=97&&i<=122)){
+                lengh--;
+                list.add((char) i);
+            }
+        }
+        for (Character character : list) {
+            pwd = pwd + character;
+        }
+        System.out.println(pwd);
+
+3：public static void Line() {
+        FileReader fr = null;
+        BufferedReader br = null;
+        try {
+            fr = new FileReader("D:\\a.txt");
+            br = new BufferedReader(fr);
+            String line = null;
+            while ((line = br.readLine()) != null){
+                System.out.println(line);
+            }
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }finally {
+            try {
+                br.close();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            try {
+                fr.close();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+    }
